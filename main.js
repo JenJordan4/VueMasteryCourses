@@ -2,6 +2,8 @@ var app = new Vue({
   el:  '#app',
   data: {
     product: 'Socks',
-    description: 'These warm and wooly socks will keep your feet comfy!'
+    description: 'These warm and wooly socks will keep your feet comfy!',
+    image: './socks_green.jpg',
+    address: 'http://www.google.com'
   }
 })
