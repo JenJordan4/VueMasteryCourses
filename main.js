@@ -2,20 +2,21 @@ var app = new Vue({
   el:  '#app',
   data: {
     product: 'Socks',
-    description: 'These warm and wooly socks will keep your feet comfy!',
-    image: './socks_green.jpg',
-    inStock: true,
+    brand: 'Vue Mastery',
+    selectedVariant: 0,
     details: ["80% cotton", "20% polyester", "Gender-neutral"],
     variants: [
       {
         variantId: 2234,
         variantColor: 'green',
-        variantImage: './socks_green.jpg'
+        variantImage: './socks_green.jpg',
+        variantQuantity: 10   
       },
       {
         variantId: 2235,
         variantColor: 'blue',
-        variantImage: './socks_blue.jpg'
+        variantImage: './socks_blue.jpg',
+        variantQuantity: 0   
       }
     ],
     cart: 0
@@ -24,8 +25,19 @@ var app = new Vue({
     addToCart: function () {
       this.cart += 1
     },
-    updateProduct: function (variantImage) {
-      this.image = variantImage
+    updateProduct: function (index) {
+      this.selectedVariant = index
+    }
+  },
+  computed: {
+    title() {
+      return this.brand + ' ' + this.product
+    },
+    image() {
+      return this.variants[this.selectedVariant].variantImage
+    },
+    inStock() {
+      return this.variants[this.selectedVariant].variantQuantity
     }
   }
 })
